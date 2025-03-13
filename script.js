@@ -73,3 +73,7 @@ erase.onclick = () => {
 for(let i = 0; i < limit; i++) {
     buildSquad();
 }
+
+
+
+// build the game
