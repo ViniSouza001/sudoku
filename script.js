@@ -52,10 +52,21 @@ numerals.forEach (numeral => {
             alert("Você precisa selecionar uma célula primeiro!")
         }
     }
+});
+
+document.addEventListener('keypress', (value) => {
+    if(selectedCell != undefined) {
+        number = Number(value.key)
+
+        // see if the value is a number different of 0
+        if(!isNaN(number) && number != 0) {
+            selectedCell.textContent = number
+        }
+    }
 })
 
 erase.onclick = () => {
-    selectedCell.textContent = null
+    selectedCell.textContent = null;
 }
 
 // start of all functions

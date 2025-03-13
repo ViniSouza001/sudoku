@@ -1,0 +1,6 @@
+facil = 38
+medio = 36
+dificil = 30
+especialista = 25
+mestra = 23
+extrema = 22
