@@ -27,3 +27,5 @@ const buildCell = (squad) => {
 for(let i = 0; i < limit; i++) {
     buildSquad();
 }
+
+// apenas um teste
