@@ -1,4 +1,6 @@
 const main = document.querySelector("main");
+const numerals = document.querySelectorAll(".numeral");
+const erase = document.querySelector('.erase')
 let limit = 9;
 let numberCell = 0;
 const cells = [];
@@ -39,6 +41,21 @@ const buildCell = (squad) => {
 
         cell.onclick = () => {handleClick(cell)}
     }
+}
+
+numerals.forEach (numeral => {
+    numeral.onclick = () => {
+        if(selectedCell) {
+            const number = Number(numeral.textContent)
+            selectedCell.textContent = number
+        } else {
+            alert("Você precisa selecionar uma célula primeiro!")
+        }
+    }
+})
+
+erase.onclick = () => {
+    selectedCell.textContent = null
 }
 
 // start of all functions

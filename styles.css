@@ -45,7 +45,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    font: normal 15pt "Arial";
+    font: normal 25pt "Arial";
     user-select: none;
 }
 
@@ -64,18 +64,29 @@ main {
 
 .numeral {
     background-color: rgb(53, 53, 53);
-    padding: 20px;
+    padding: 17px 20px;
     border-radius: 10px;
     cursor: pointer;
     transition: .3s;
+    user-select: none;
+    font: normal 25pt "Arial";
+    color: white;
 }
 
 .numeral:hover {
     background-color: rgba(205, 205, 205, 0.5);
 }
 
-.number {
-    font: normal 25pt "Arial";
-    user-select: none;
-    color: white;
+.icons {
+    width: 70%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.erase {
+    width: 50px;
+    cursor: pointer;
+    filter: invert(100%);
 }
