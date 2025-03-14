@@ -1,20 +1,22 @@
 const main = document.querySelector("main");
 const numerals = document.querySelectorAll(".numeral");
-const erase = document.querySelector('.erase')
+const erase = document.querySelector('.erase');
 let limit = 9;
 let numberCell = 0;
 const cells = [];
 let selectedCell;
+let column = 1;
+let line = 0;
 
 // Building cells
 const createElement = (name) => {
-    const div = document.createElement('div')
+    const div = document.createElement('div');
     div.className = `${name}`;
     return div;
 }
 
 const buildSquad = (i) => {
-    const squad = createElement(`squad ${i}`);
+    const squad = createElement(`squad ${i + 1}`);
     main.appendChild(squad);
     buildCell(squad);
 }
@@ -33,11 +35,33 @@ const handleClick = (element) => {
 }
 
 const buildCell = (squad) => {
+    const numbSquad = Number(squad.classList[1]);
+    if(numbSquad == 1 || numbSquad == 4 || numbSquad == 7) {column = 1}
+    if(numbSquad == 2 || numbSquad == 5 || numbSquad == 8) {column = 4}
+    if(numbSquad == 3 || numbSquad == 6 || numbSquad == 9) {column = 7}
     for(let i = 0; i < limit; i++) {
-        const cell = createElement(`cell ${numberCell}`);
+        const cell = createElement(`cell ${numberCell + 1}`);
         squad.appendChild(cell);
         numberCell = numberCell + 1;
-        cells.push(cell)
+        cells.push(cell);
+
+        // number the column of cells
+            if(numbSquad == 1 || numbSquad == 4 || numbSquad == 7) {
+                cell.classList.add(`column${column}`);
+                column++;
+                if(column % 4 == 0) column = 1;
+            }
+            if(numbSquad == 2 || numbSquad == 5 || numbSquad == 8) {
+                cell.classList.add(`column${column}`);
+                column++;
+                if(column % 7 == 0) column = 4;
+            }
+            if(numbSquad == 3 || numbSquad == 6 || numbSquad == 9) {
+                cell.classList.add(`column${column}`);
+                column++;
+                if(column % 10 == 0) column = 7;
+            }
+        
 
         cell.onclick = () => {handleClick(cell)}
     }
