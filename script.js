@@ -13,8 +13,8 @@ const createElement = (name) => {
     return div;
 }
 
-const buildSquad = () => {
-    const squad = createElement("squad");
+const buildSquad = (i) => {
+    const squad = createElement(`squad ${i}`);
     main.appendChild(squad);
     buildCell(squad);
 }
@@ -71,9 +71,8 @@ erase.onclick = () => {
 
 // start of all functions
 for(let i = 0; i < limit; i++) {
-    buildSquad();
+    buildSquad(i);
 }
-
 
 
 // build the game
