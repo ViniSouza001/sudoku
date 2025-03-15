@@ -4,7 +4,7 @@ const erase = document.querySelector('.erase');
 let limit = 9;
 let numberCell = 0;
 const cells = [];
-const squads = [];
+const sortedCells = [];
 let selectedCell;
 let column = 1;
 let line = 1;
@@ -20,7 +20,6 @@ const buildSquad = (i) => {
     const squad = createElement(`squad ${i + 1}`);
     main.appendChild(squad);
     buildCell(squad);
-    squads.push(squad);
 }
 
 // function clicking on cells
@@ -123,11 +122,37 @@ for(let i = 0; i < limit; i++) {
 
 // build the game
 // sort some squad to start the game
-const sort = (element) => {
-    const sortedNumber =Math.floor(Math.random() * 10);
-    const sortedElement = element[sortedNumber];
-    return sortedElement;
+const sortNumbers = (element, isArray ,maxNumber) => {
+    const sortedNumber = Math.floor(Math.random() * maxNumber); // sort a numb
+    if (isArray) {
+        const sortedElement = element[sortedNumber];
+        return sortedElement;
+    } else {
+        return sortedNumber;
+    }
 }
 
-const sortedSquad = sort(squads);
-console.log(sortedSquad);
+// sort number between 1 and 81
+// keep these numbers inside an array
+
+// sort 38 cells (easy mode)
+for (let i = 0; i < 37; i++) {
+    let sortedNumber = sortNumbers(cells, true, 81); // sort a first number
+    // console.log(sortedNumber);
+    if(sortedCells.length > 0) { // if the sorted number already have numbers sorted
+        sortedCells.forEach(cell => { // let's see if there will something repeated
+        console.log("entrou no array")
+        if(sortedNumber == cell) {
+            while (sortedNumber == cell) {
+                sortedNumber = sortNumbers(cells, true, 81);
+            }
+            sortedCells.push(sortedNumber);
+            
+        }
+        })
+    } else {
+        sortedCells.push(sortedNumber);
+    }
+}
+
+console.log(sortedCells);
