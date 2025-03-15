@@ -6,7 +6,7 @@ let numberCell = 0;
 const cells = [];
 let selectedCell;
 let column = 1;
-let line = 0;
+let line = 1;
 
 // Building cells
 const createElement = (name) => {
@@ -36,16 +36,22 @@ const handleClick = (element) => {
 
 const buildCell = (squad) => {
     const numbSquad = Number(squad.classList[1]);
+    // columns variable
     if(numbSquad == 1 || numbSquad == 4 || numbSquad == 7) {column = 1}
     if(numbSquad == 2 || numbSquad == 5 || numbSquad == 8) {column = 4}
     if(numbSquad == 3 || numbSquad == 6 || numbSquad == 9) {column = 7}
+    // lines variable
+    if(numbSquad == 1 || numbSquad == 2 || numbSquad == 3) {line = 1}
+    if(numbSquad == 4 || numbSquad == 5 || numbSquad == 6) {line = 4}
+    if(numbSquad == 7 || numbSquad == 8 || numbSquad == 9) {line = 7}
+
     for(let i = 0; i < limit; i++) {
         const cell = createElement(`cell ${numberCell + 1}`);
         squad.appendChild(cell);
         numberCell = numberCell + 1;
         cells.push(cell);
 
-        // number the column of cells
+        // numbering columns of cells
             if(numbSquad == 1 || numbSquad == 4 || numbSquad == 7) {
                 cell.classList.add(`column${column}`);
                 column++;
@@ -60,6 +66,20 @@ const buildCell = (squad) => {
                 cell.classList.add(`column${column}`);
                 column++;
                 if(column % 10 == 0) column = 7;
+            }
+
+            // numbering lines of cells
+            if(numbSquad == 1 || numbSquad == 2 || numbSquad == 3) {
+                cell.classList.add(`line${line}`);
+                if(numberCell % 3 == 0) line++;
+            }
+            if(numbSquad == 4 || numbSquad == 5 || numbSquad == 6) {
+                cell.classList.add(`line${line}`);
+                if(numberCell % 3 == 0) line++;
+            }
+            if(numbSquad == 7 || numbSquad == 8 || numbSquad == 9) {
+                cell.classList.add(`line${line}`);
+                if(numberCell % 3 == 0) line++;
             }
         
 
