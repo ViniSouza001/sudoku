@@ -4,6 +4,7 @@ const erase = document.querySelector('.erase');
 let limit = 9;
 let numberCell = 0;
 const cells = [];
+const squads = [];
 let selectedCell;
 let column = 1;
 let line = 1;
@@ -19,6 +20,7 @@ const buildSquad = (i) => {
     const squad = createElement(`squad ${i + 1}`);
     main.appendChild(squad);
     buildCell(squad);
+    squads.push(squad);
 }
 
 // function clicking on cells
@@ -46,7 +48,7 @@ const buildCell = (squad) => {
     if(numbSquad == 7 || numbSquad == 8 || numbSquad == 9) {line = 7}
 
     for(let i = 0; i < limit; i++) {
-        const cell = createElement(`cell ${numberCell + 1}`);
+        const cell = createElement(`cell cell${numberCell + 1}`);
         squad.appendChild(cell);
         numberCell = numberCell + 1;
         cells.push(cell);
@@ -90,21 +92,21 @@ const buildCell = (squad) => {
 numerals.forEach (numeral => {
     numeral.onclick = () => {
         if(selectedCell) {
-            const number = Number(numeral.textContent)
-            selectedCell.textContent = number
+            const number = Number(numeral.textContent);
+            selectedCell.textContent = number;
         } else {
-            alert("Você precisa selecionar uma célula primeiro!")
+            alert("Você precisa selecionar uma célula primeiro!");
         }
     }
 });
 
 document.addEventListener('keypress', (value) => {
     if(selectedCell != undefined) {
-        number = Number(value.key)
+        number = Number(value.key);
 
         // see if the value is a number different of 0
         if(!isNaN(number) && number != 0) {
-            selectedCell.textContent = number
+            selectedCell.textContent = number;
         }
     }
 })
@@ -120,3 +122,12 @@ for(let i = 0; i < limit; i++) {
 
 
 // build the game
+// sort some squad to start the game
+const sort = (element) => {
+    const sortedNumber =Math.floor(Math.random() * 10);
+    const sortedElement = element[sortedNumber];
+    return sortedElement;
+}
+
+const sortedSquad = sort(squads);
+console.log(sortedSquad);
