@@ -119,24 +119,8 @@ for(let i = 0; i < limit; i++) {
     buildSquad(i);
 }
 
-
 // build the game
-// sort some squad to start the game
-const sortNumbers = (element, isArray ,maxNumber) => {
-    const sortedNumber = Math.floor(Math.random() * maxNumber); // sort a numb
-    if (isArray) {
-        const sortedElement = element[sortedNumber];
-        return sortedElement;
-    } else {
-        return sortedNumber;
-    }
-}
-
-// sort number between 1 and 81
-// keep these numbers inside an array
-
 // sort 38 cells (easy mode)
-
 while (sortedCells.length < 38) {
   let sortedNumber = Math.floor(Math.random() * 81); // um número entre 0 e 80
   let sortedCell = cells[sortedNumber];
@@ -146,4 +130,4 @@ while (sortedCells.length < 38) {
   }
 }
 
-console.log(sortedCells);
+// console.log(sortedCells);
