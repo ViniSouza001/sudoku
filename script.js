@@ -5,7 +5,6 @@ let limit = 9;
 let numberCell = 0;
 const cells = [];
 const sortedCells = [];
-let selectedCell;
 let column = 1;
 let line = 1;
 
@@ -136,23 +135,14 @@ const sortNumbers = (element, isArray ,maxNumber) => {
 // keep these numbers inside an array
 
 // sort 38 cells (easy mode)
-for (let i = 0; i < 37; i++) {
-    let sortedNumber = sortNumbers(cells, true, 81); // sort a first number
-    // console.log(sortedNumber);
-    if(sortedCells.length > 0) { // if the sorted number already have numbers sorted
-        sortedCells.forEach(cell => { // let's see if there will something repeated
-        console.log("entrou no array")
-        if(sortedNumber == cell) {
-            while (sortedNumber == cell) {
-                sortedNumber = sortNumbers(cells, true, 81);
-            }
-            sortedCells.push(sortedNumber);
-            
-        }
-        })
-    } else {
-        sortedCells.push(sortedNumber);
-    }
+
+while (sortedCells.length < 38) {
+  let sortedNumber = Math.floor(Math.random() * 81); // um número entre 0 e 80
+  let sortedCell = cells[sortedNumber];
+  if (!sortedCells.includes(sortedCell)) {
+    sortedCells.push(sortedCell);
+    sortedCell.textContent = Math.floor(Math.random() * 9 + 1);
+  }
 }
 
 console.log(sortedCells);
