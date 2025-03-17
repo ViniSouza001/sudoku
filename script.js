@@ -1,6 +1,7 @@
 const main = document.querySelector("main");
 const numerals = document.querySelectorAll(".numeral");
 const erase = document.querySelector('.erase');
+let selectedCell;
 let limit = 9;
 let numberCell = 0;
 const cells = [];
