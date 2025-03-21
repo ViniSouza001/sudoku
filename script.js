@@ -120,14 +120,41 @@ for(let i = 0; i < limit; i++) {
 }
 
 // build the game
+
+cells.forEach(cell => {
+    const childCells = cell.parentNode.querySelectorAll('.cell'); // 
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // we will removing numbers as it repeats
+    let randomNumber = Math.floor(Math.random() * 9 + 1); // random number between 1 and 9
+    let repeatedNumber = false;
+    
+    const contentCells = [];
+    childCells.forEach(child => {
+        contentCells.push(child.textContent);
+    });
+
+    contentCells.forEach(content => {
+        console.log(contentCells)
+        while(contentCells.includes(randomNumber)) {
+            randomNumber = Math.floor(Math.random() * 9 + 1);
+        }
+        if(!contentCells.includes(randomNumber)) {
+            content = randomNumber;
+            
+        }
+        cell.textContent = content;
+    })
+   
+    
+});
+
 // sort 38 cells (easy mode)
-while (sortedCells.length < 38) {
-  let sortedNumber = Math.floor(Math.random() * 81); // um número entre 0 e 80
-  let sortedCell = cells[sortedNumber];
-  if (!sortedCells.includes(sortedCell)) {
-    sortedCells.push(sortedCell);
-    sortedCell.textContent = Math.floor(Math.random() * 9 + 1);
-  }
-}
+// while (sortedCells.length < 38) {
+//   let sortedNumber = Math.floor(Math.random() * 81); // um número entre 0 e 80
+//   let sortedCell = cells[sortedNumber];
+//   if (!sortedCells.includes(sortedCell)) {
+//     sortedCells.push(sortedCell);
+//     sortedCell.textContent = Math.floor(Math.random() * 9 + 1);
+//   }
+// }
 
 // console.log(sortedCells);
